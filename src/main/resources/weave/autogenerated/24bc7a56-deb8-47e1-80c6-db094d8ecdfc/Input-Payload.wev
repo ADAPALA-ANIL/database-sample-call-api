@@ -1,0 +1,4 @@
+%dw 2.0
+
+type auto_24bc7a56_deb8_47e1_80c6_db094d8ecdfc_Input_Payload = Array<{|  emp_status: String,   emp_name: String,   emp_id: Number|}>
+

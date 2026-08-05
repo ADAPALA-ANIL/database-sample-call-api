@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="52f2cbb4-5c76-49a9-9ab8-87a21c51bcc9" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="database-sample-flow" doc:id="806fcc61-1b42-4c3e-93fb-960b5d787d3c" >
+		<http:listener doc:name="Listener" doc:id="81a7c8a4-3736-4369-afa9-905e38adcba2" config-ref="HTTP_Listener_config" path="/database-insert"/>
+		<logger level="INFO" doc:name="Start Logger" doc:id="15229762-289d-4398-8b89-565348e7fbed" message="Database flow Start logging: #[payload]"/>
+		<ee:transform doc:name="Set Input Payload" doc:id="49499f96-f2f6-4161-900e-d629b8a37e7f" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"status": "success",
+	"data": [{
+		"id": 1,
+		"employee_name": "Tiger Nixon",
+		"employee_salary": 320800,
+		"employee_age": 61,
+		"profile_image": ""
+	},{
+		"id": 2,
+		"employee_name": "Garrett Winters",
+		"employee_salary": 170750,
+		"employee_age": 63,
+		"profile_image": ""
+	},{
+		"id": 3,
+		"employee_name": "Ashton Cox",
+		"employee_salary": 86000,
+		"employee_age": 66,
+		"profile_image": ""
+	},{
+		"id": 4,
+		"employee_name": "Cedric Kelly",
+		"employee_salary": 433060,
+		"employee_age": 22,
+		"profile_image": ""
+	},{
+		"id": 5,
+		"employee_name": "Airi Satou",
+		"employee_salary": 162700,
+		"employee_age": 33,
+		"profile_image": ""
+	},{
+		"id": 6,
+		"employee_name": "Brielle Williamson",
+		"employee_salary": 372000,
+		"employee_age": 61,
+		"profile_image": ""
+	},{
+		"id": 7,
+		"employee_name": "Herrod Chandler",
+		"employee_salary": 137500,
+		"employee_age": 59,
+		"profile_image": ""
+	},{
+		"id": 8,
+		"employee_name": "Rhona Davidson",
+		"employee_salary": 327900,
+		"employee_age": 55,
+		"profile_image": ""
+	},{
+		"id": 9,
+		"employee_name": "Colleen Hurst",
+		"employee_salary": 205500,
+		"employee_age": 39,
+		"profile_image": ""
+	},{
+		"id": 10,
+		"employee_name": "Sonya Frost",
+		"employee_salary": 103600,
+		"employee_age": 23,
+		"profile_image": ""
+	},{
+		"id": 11,
+		"employee_name": "Jena Gaines",
+		"employee_salary": 90560,
+		"employee_age": 30,
+		"profile_image": ""
+	},{
+		"id": 12,
+		"employee_name": "Quinn Flynn",
+		"employee_salary": 342000,
+		"employee_age": 22,
+		"profile_image": ""
+	},{
+		"id": 13,
+		"employee_name": "Charde Marshall",
+		"employee_salary": 470600,
+		"employee_age": 36,
+		"profile_image": ""
+	},{
+		"id": 14,
+		"employee_name": "Haley Kennedy",
+		"employee_salary": 313500,
+		"employee_age": 43,
+		"profile_image": ""
+	},{
+		"id": 15,
+		"employee_name": "Tatyana Fitzpatrick",
+		"employee_salary": 385750,
+		"employee_age": 19,
+		"profile_image": ""
+	},{
+		"id": 16,
+		"employee_name": "Michael Silva",
+		"employee_salary": 198500,
+		"employee_age": 66,
+		"profile_image": ""
+	},{
+		"id": 17,
+		"employee_name": "Paul Byrd",
+		"employee_salary": 725000,
+		"employee_age": 64,
+		"profile_image": ""
+	},{
+		"id": 18,
+		"employee_name": "Gloria Little",
+		"employee_salary": 237500,
+		"employee_age": 59,
+		"profile_image": ""
+	},{
+		"id": 19,
+		"employee_name": "Bradley Greer",
+		"employee_salary": 132000,
+		"employee_age": 41,
+		"profile_image": ""
+	},{
+		"id": 20,
+		"employee_name": "Dai Rios",
+		"employee_salary": 217500,
+		"employee_age": 35,
+		"profile_image": ""
+	},{
+		"id": 21,
+		"employee_name": "Jenette Caldwell",
+		"employee_salary": 345000,
+		"employee_age": 30,
+		"profile_image": ""
+	},{
+		"id": 22,
+		"employee_name": "Yuri Berry",
+		"employee_salary": 675000,
+		"employee_age": 40,
+		"profile_image": ""
+	},{
+		"id": 23,
+		"employee_name": "Caesar Vance",
+		"employee_salary": 106450,
+		"employee_age": 21,
+		"profile_image": ""
+	},{
+		"id": 24,
+		"employee_name": "Doris Wilder",
+		"employee_salary": 85600,
+		"employee_age": 23,
+		"profile_image": ""
+	}],
+	"message": "Successfully! All records has been fetched."
+}]]></ee:set-payload>
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="flow" ><![CDATA[%dw 2.0
+output application/json
+---
+attributes.queryParams.flow default ""]]></ee:set-variable>
+				<ee:set-variable variableName="method" ><![CDATA[%dw 2.0
+output application/json
+---
+attributes.method default "GET"]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<ee:transform doc:name="Insert Payload Request" doc:id="bdc47260-078a-495a-b321-9c2f984e0559">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload.data map {
+	"emp_status": "A",
+	"emp_name": $.employee_name,
+	"emp_id": $.id
+}
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<choice doc:name="Choice" doc:id="56c15723-1ac6-4687-8c26-4a4edfd67b53" >
+			<when expression='#[(vars.flow == "each") and  (vars.method == "POST")]'>
+				<flow-ref doc:name="database-sample-insert-record-each-sub-flow" doc:id="49ddb422-bea3-48d5-aed1-3a20d454fd0e" name="database-sample-insert-record-each-sub-flow" />
+			</when>
+			<when expression='#[(vars.flow == "bulk") and (vars.method == "POST")]'>
+				<flow-ref doc:name="database-sample-bulk-insert-sub-flow" doc:id="a8df61e3-fa65-4261-89e9-683521bf446a" name="database-sample-bulk-insert-sub-flow" />
+			</when>
+			<otherwise>
+				<flow-ref doc:name="database-sample-get-all-records-sub-flow" doc:id="9b89e144-f8ff-4793-8bca-0c490ca941e7" name="database-sample-get-all-records-sub-flow" />
+			</otherwise>
+		</choice>
+		<logger level="INFO" doc:name="End Logger" doc:id="77e12fdf-c50b-497a-a959-e71677bdf6a8" message='"End of the flow:" #[vars.databaseResponse]'/>
+	</flow>
+	<flow name="database-sample-insert-record-each-sub-flow" doc:id="7ec2c409-57b6-4d91-b4c9-263d2c940f4f" >
+		<foreach doc:name="For Each" doc:id="23958799-15b7-40d7-aae6-cfad0f2c9c25" collection="#[payload]">
+			<db:insert doc:name="Insert Records One By One" doc:id="cdaf8d63-72fc-4ade-b51a-625784da8d93" config-ref="Database_Config">
+			<db:sql><![CDATA[insert into onboard.emp_master(emp_id, emp_name, emp_status) values (:emp_id, :emp_name, :emp_status)]]></db:sql>
+			<db:input-parameters><![CDATA[#[payload]]]></db:input-parameters>
+		</db:insert>
+			<logger level="INFO" doc:name="Logger at insert record by record" doc:id="117fd919-ad1d-4205-83f1-22c2a9001b06" message='Logger at insert record by record: #["all records inserted successfully"]' />
+		</foreach>
+	</flow>
+	<flow name="database-sample-bulk-insert-sub-flow" doc:id="24bc7a56-deb8-47e1-80c6-db094d8ecdfc" >
+		<db:bulk-insert doc:name="Bulk insert" doc:id="ca313d1c-f640-478a-9710-d22f781eabd3" config-ref="Database_Config">
+			<db:sql><![CDATA[insert into onboard.emp_master(emp_id, emp_name, emp_status) values (:emp_id, :emp_name, :emp_status)]]></db:sql>
+		</db:bulk-insert>
+		<logger level="INFO" doc:name="Logger at bulk insert " doc:id="4497eaba-f56d-49bf-8cfe-84ed149890f6" message='Logger at bulk insert: #["all records inserted successfully"]' />
+	</flow>
+	<flow name="database-sample-get-all-records-sub-flow" doc:id="4e72c37d-3192-4e88-a16c-989b61d4922b" >
+		<db:select doc:name="Select" doc:id="80aedc08-d109-47a1-b8af-1192d5ba75a4" config-ref="Database_Config">
+			<db:sql ><![CDATA[select emp_id, emp_name, emp_status from onboard.emp_master]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="6344bb98-0a8c-4106-a6c7-a60073783376" >
+			<ee:message >
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="databaseResponse" ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+	</flow>
+</mule>
