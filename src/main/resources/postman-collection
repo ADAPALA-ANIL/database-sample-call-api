@@ -1,0 +1,53 @@
+{
+  "info": {
+    "_postman_id": "database-sample-call-export",
+    "name": "database-sample-call",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "database-sample-call-insert-each-record",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/database-insert?flow=each",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["database-insert"],
+          "query": [{ "key": "flow", "value": "each" }]
+        }
+      }
+    },
+    {
+      "name": "database-sample-call-insert-bulk",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/database-insert?flow=bulk",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["database-insert"],
+          "query": [{ "key": "flow", "value": "bulk" }]
+        }
+      }
+    },
+    {
+      "name": "database-sample-call-all-recoords",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/database-insert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["database-insert"]
+        }
+      }
+    }
+  ]
+}
