@@ -202,7 +202,7 @@ payload.data map {
 				<flow-ref doc:name="database-sample-get-all-records-sub-flow" doc:id="9b89e144-f8ff-4793-8bca-0c490ca941e7" name="database-sample-get-all-records-sub-flow" />
 			</otherwise>
 		</choice>
-		<logger level="INFO" doc:name="End Logger" doc:id="77e12fdf-c50b-497a-a959-e71677bdf6a8" message='"End of the flow:" #[vars.databaseResponse]'/>
+		<logger level="INFO" doc:name="End Logger" doc:id="77e12fdf-c50b-497a-a959-e71677bdf6a8" message='#["End of the flow: " ++ write(payload, "application/json")]'/>
 	</flow>
 	<flow name="database-sample-insert-record-each-sub-flow" doc:id="7ec2c409-57b6-4d91-b4c9-263d2c940f4f" >
 		<foreach doc:name="For Each" doc:id="23958799-15b7-40d7-aae6-cfad0f2c9c25" collection="#[payload]">
@@ -225,12 +225,12 @@ payload.data map {
 		</db:select>
 		<ee:transform doc:name="Transform Message" doc:id="6344bb98-0a8c-4106-a6c7-a60073783376" >
 			<ee:message >
-			</ee:message>
-			<ee:variables >
-				<ee:set-variable variableName="databaseResponse" ><![CDATA[%dw 2.0
+				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-payload]]></ee:set-variable>
+payload]]></ee:set-payload>
+			</ee:message>
+			<ee:variables >
 			</ee:variables>
 		</ee:transform>
 	</flow>

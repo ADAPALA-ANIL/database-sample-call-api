@@ -640,4 +640,5 @@ type auto_4e72c37d_3192_4e88_a16c_989b61d4922b_Output_Variables_flow = { _?: Str
       </types:output-event>
     </types:processor-declaration>
   </types:enrichment>
+  <types:enrichment select="#6344bb98-0a8c-4106-a6c7-a60073783376"/>
 </types:mule>
